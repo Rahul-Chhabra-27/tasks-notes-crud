@@ -1,14 +1,17 @@
 package com.chhabrarahul.tasksnotes.notes;
 
+import com.chhabrarahul.tasksnotes.common.BaseEntity;
 import com.chhabrarahul.tasksnotes.tasks.TaskEntity;
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity(name = "notes")
-public class NoteEntity {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Id
-    private Long Id;
+public class NoteEntity extends BaseEntity {
 
     @Column(name="title", nullable = false)
     private String title;
