@@ -32,10 +32,3 @@ public class TaskEntity extends BaseEntity {
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     List<NoteEntity> notes;
 }
-
-// primary key in a relation / table is used to uniquely identify the record/tuple inside the table
-
-//Table products
-//
-//        P1 @primary key id : 1 name : 'Macbook' color : 'midnignt'
-//        P2 @primary key id : 2 name : 'Macbook' color : 'silver'
