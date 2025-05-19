@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: tasks-notes
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo
+    username: postgres
+    password: aec19cs047
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # It means that the database will be updated automatically.
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+server:
+  port: 8989
