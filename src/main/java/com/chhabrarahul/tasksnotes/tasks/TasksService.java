@@ -37,7 +37,7 @@ public class TasksService {
             throw new TaskAlreadyExistsException("Task due date is in the past");
         }
         // TODO : Check if the body of the TaskDto is not null.
-        if(task.getName() != null && task.getName().isEmpty() || task.getDueDate() == null){
+        if((task.getName() != null && task.getName().length() <= 1) || task.getDueDate() == null){
             throw new TaskInvalidException("Task name or due date is null");
         }
         var taskEntity = modelMapper.map(task,TaskEntity.class);
