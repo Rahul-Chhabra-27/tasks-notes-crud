@@ -23,7 +23,10 @@ public class TasksController {
     }
 
     @GetMapping("/{taskId}")
-    void getTaskById(@PathVariable Long taskId) {}
+    ResponseEntity<TaskDto> getTaskById(@PathVariable Long taskId) {
+        TaskDto task = tasksService.getTaskById(taskId);
+        return ResponseEntity.ok(task);
+    }
 
     @PostMapping("")
     ResponseEntity<TaskDto> createNewTask(@RequestBody TaskDto task) {

@@ -24,7 +24,9 @@ public class TasksService {
         // TODO : return the list of task dtos
 
         var tasks = tasksRepository.findAll();
-        return tasks.stream().map(task -> modelMapper.map(task, TaskDto.class)).toList();
+        return tasks
+                .stream()
+                .map(task -> modelMapper.map(task, TaskDto.class)).toList();
 
     }
 
@@ -38,5 +40,12 @@ public class TasksService {
         var taskEntity = modelMapper.map(task,TaskEntity.class);
         var savedTask = tasksRepository.save(taskEntity);
         return modelMapper.map(savedTask, TaskDto.class);
+    }
+    TaskDto getTaskById(Long taskId) {
+        TaskEntity task  = tasksRepository.findById(taskId).orElse(null);
+
+        TaskDto taskDto = modelMapper.map(task,TaskDto.class);
+
+        return taskDto;
     }
 }
