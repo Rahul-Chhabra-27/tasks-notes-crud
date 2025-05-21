@@ -62,7 +62,36 @@ public class TasksRepositoryTests {
         Assertions.assertThat(taskList.get(1).getName()).isEqualTo("Dummy Task 2");
     }
     @Test
-    public void taskRepositoryFindByIdSuccessTest() {}
+    public void taskRepositoryFindByIdSuccessTest() {
+        // TODO : Arrange
+        var task = TaskEntity.builder()
+                .name("Dummy Task")
+                .done(false)
+                .dueDate(new Date())
+                .build();
+        var savedTask = tasksRepository.save(task);
+        // TODO: Act
+        var fetchedTask = tasksRepository
+                .findById(savedTask.getId())
+                .orElse(null);
+        // TODO: Assert
+        Assertions.assertThat(fetchedTask).isNotNull();
+        Assertions.assertThat(fetchedTask.getId()).isEqualTo(savedTask.getId());
+    }
     @Test
-    public void taskRepositoryFindByIdFailureTest() {}
+    public void taskRepositoryFindByIdFailureTest() {
+        // TODO : Arrange
+         var task = TaskEntity.builder()
+                .name("Dummy Task")
+                .done(false)
+                .dueDate(new Date())
+                .build();
+         task.setId(100L);
+        // TODO: Act
+        var fetchedTask = tasksRepository
+                .findById(task.getId())
+                .orElse(null);
+       // TODO: Assert
+        Assertions.assertThat(fetchedTask).isNull();
+    }
 }
