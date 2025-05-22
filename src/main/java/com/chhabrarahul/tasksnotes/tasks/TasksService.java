@@ -1,6 +1,7 @@
 package com.chhabrarahul.tasksnotes.tasks;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -11,6 +12,8 @@ public class TasksService {
     private ModelMapper modelMapper;
 
     // constructor
+
+
     public TasksService(TasksRepository tasksRepository, ModelMapper modelMapper){
         this.tasksRepository = tasksRepository;
         this.modelMapper = modelMapper;
